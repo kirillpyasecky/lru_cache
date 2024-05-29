@@ -1,0 +1,23 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+#------------------------------------------
+# Rules for Light Weight LRU Cache library
+#------------------------------------------
+
+# Static library
+cc_library(
+    name = "lw_lru_cache_static",
+    deps = [
+        "//src:cache_lib",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+# Dynamic library
+cc_shared_library(
+    name = "lw_lru_cache_dynamic",
+    shared_lib_name = "lw_lru_cache.so",
+    deps = ["//src:cache_lib"],
+    visibility = ["//visibility:public"],
+)
+
