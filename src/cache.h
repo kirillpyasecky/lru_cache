@@ -72,14 +72,17 @@ namespace cache {
             // lookup value in the cache
             if (hit == hash_.end()) {
                 if (Full()) {
+                    // if full, erase last used value from list (cache_)
                     hash_.erase(cache_.back().first);
                     cache_.pop_back();
                 }
+                // add to first position in list (cache_)
                 cache_.emplace_front(key, value);
                 hash_.emplace(key, cache_.begin());
                 return false;
             }
 
+            // if found, move to begin of list (cache_)
             auto eltit = hit->second;
             if (eltit != cache_.begin()) {
                 cache_.splice(cache_.begin(), cache_, eltit, std::next(eltit));
