@@ -1,5 +1,5 @@
 # Light weitght LRU Cache lib
-## Usage
+## Usage [bazel]
 In WORKSPACE file:
 ```
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
